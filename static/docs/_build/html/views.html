@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The methods &mdash; BuildCV 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="BuildCV 1.0.1 documentation" href="index.html" />
+    <link rel="next" title="Work" href="work.html" />
+    <link rel="prev" title="Welcome to yourcv’s documentation!" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="work.html" title="Work"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to yourcv’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BuildCV 1.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-udata.views">
+<span id="the-methods"></span><h1>The methods<a class="headerlink" href="#module-udata.views" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="udata.views.create_study">
+<code class="descclassname">udata.views.</code><code class="descname">create_study</code><span class="sig-paren">(</span><em>inst</em>, <em>faculty</em>, <em>begin_year</em>, <em>end_year</em>, <em>human</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.create_study" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function create an study instance for given human in all languages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inst</strong> (<em>str or unicode</em>) &#8211; name of institution</li>
+<li><strong>faculty</strong> (<em>str or unicode</em>) &#8211; name of faculty</li>
+<li><strong>begin_year</strong> (<em>int</em>) &#8211; year when start the studies</li>
+<li><strong>end_year</strong> (<em>int</em>) &#8211; year when end the studies</li>
+<li><strong>human</strong> (<em>udata.models.Human</em>) &#8211; linked human instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">study instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="education.html#udata.models.Study" title="udata.models.Study">udata.models.Study</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.create_work">
+<code class="descclassname">udata.views.</code><code class="descname">create_work</code><span class="sig-paren">(</span><em>human</em>, <em>inst</em>, <em>position</em>, <em>begin_year</em>, <em>end_year</em>, <em>comments</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.create_work" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="work.html#udata.models.Work" title="udata.models.Work"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Work</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>human</strong> (<em>udata.models.Human</em>) &#8211; a linked human instance</li>
+<li><strong>inst</strong> (<em>str</em>) &#8211; institution name</li>
+<li><strong>position</strong> (<em>str</em>) &#8211; position name</li>
+<li><strong>begin_year</strong> (<em>int</em>) &#8211; the begin work year</li>
+<li><strong>end_year</strong> (<em>int</em>) &#8211; the end work year</li>
+<li><strong>comments</strong> (<em>str</em>) &#8211; comments about this work</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a resulted instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="work.html#udata.models.Work" title="udata.models.Work">udata.models.Work</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.base">
+<code class="descclassname">udata.views.</code><code class="descname">base</code><span class="sig-paren">(</span><em>request</em>, <em>lang=None</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>It&#8217;s our base view. If the user is not authenticated, then we ask him
+for authentication. If he&#8217;s authenticated for the first time we need to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>create a new human</li>
+<li>pupulate his general information from facebook account (like email and name)</li>
+<li>ask facebook for informations about education and work places and</li>
+<li>create new <a href="#id1"><span class="problematic" id="id2">:py:module:`udata.models.Study`</span></a> and <a href="#id3"><span class="problematic" id="id4">:py:module:`udata.models.Work`</span></a></li>
+</ul>
+</div></blockquote>
+<p>We have the optional param</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lang</strong> (<em>str</em>) &#8211; it&#8217;s give us the language code. If not given, we will use the language code from human object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.human">
+<code class="descclassname">udata.views.</code><code class="descname">human</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.human" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a human instance. The user is need to be logged in.
+If the human instance exists - edit it. At the end - re-generate all CVs of this human by calling <code class="xref py py-meth docutils literal"><span class="pre">udata.models.CV.generate_pdf()</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>request.GET['name']</strong> (<em>str</em>) &#8211; the name of human</li>
+<li><strong>request.GET['web']</strong> (<em>str</em>) &#8211; the url of web-site if any</li>
+<li><strong>request.GET['email']</strong> (<em>str</em>) &#8211; the e-mail</li>
+<li><strong>request.GET['phone']</strong> (<em>str</em>) &#8211; the phone number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a JsonResponse dict with success statement</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Need to verify fails and response with corresponding message. For now it response allways <cite>{&#8216;success&#8217;: True}</cite></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.studies">
+<code class="descclassname">udata.views.</code><code class="descname">studies</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.studies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create or edit existing <a class="reference internal" href="education.html#udata.models.Study" title="udata.models.Study"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Study</span></code></a> instance.
+The user need to be logged in and have associated <code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code>.
+If we edit a study instance, at the end of this function we regenerate all pdfs of <code class="xref py py-class docutils literal"><span class="pre">udata.models.CV</span></code> associated with it by calling <code class="xref py py-meth docutils literal"><span class="pre">udata.models.CV.generate_pdf()</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>request.user.human</strong> (<em>udata.models.Human</em>) &#8211; The human for how we add or edit this study instance.</li>
+<li><strong>request.GET['id']</strong> (<em>int</em>) &#8211; If the id is present, this meen we need to edit a <a class="reference internal" href="education.html#udata.models.Study" title="udata.models.Study"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Study</span></code></a> instance with given id, if it&#8217;s associated to current human.</li>
+<li><strong>request.GET['inst']</strong> (<em>str</em>) &#8211; The name of institution</li>
+<li><strong>request.GET['faculty']</strong> (<em>str</em>) &#8211; The name of faculty</li>
+<li><strong>request.GET['begin_year']</strong> (<em>int</em>) &#8211; The beggining year of studies. Not mandatory.</li>
+<li><strong>request.GET['end_year']</strong> (<em>int</em>) &#8211; The ending year of studies. Not mandatory.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.get_studies">
+<code class="descclassname">udata.views.</code><code class="descname">get_studies</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.get_studies" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of studies of current human</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">JsonResponse</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request.user.human</strong> (<em>udata.models.Human</em>) &#8211; a current human</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.studies_delete">
+<code class="descclassname">udata.views.</code><code class="descname">studies_delete</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.studies_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the <a class="reference internal" href="education.html#udata.models.Study" title="udata.models.Study"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Study</span></code></a> with given id if it&#8217;s associated to current <code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success statement ({&#8216;success&#8217;: True})</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">JsonResponse</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>request.GET['id']</strong> (<em>int</em>) &#8211; The id of <a class="reference internal" href="education.html#udata.models.Study" title="udata.models.Study"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Study</span></code></a> instance to delete</li>
+<li><strong>request.user.human</strong> (<em>udata.models.Human</em>) &#8211; The current human instance</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Need to give success: False response in case of invalid or inexistent <cite>request.GET[&#8216;id&#8217;]</cite> or of inexistent <cite>request.user.human</cite>.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.lang_delete">
+<code class="descclassname">udata.views.</code><code class="descname">lang_delete</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.lang_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for deleting an associated with this human <code class="xref py py-class docutils literal"><span class="pre">udata.models.LangSkill</span></code> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>request.GET['id']</strong> (<em>int</em>) &#8211; the id of <code class="xref py py-class docutils literal"><span class="pre">udata.models.LangSkill</span></code> instance to be deleted</li>
+<li><strong>request.user.human</strong> (<em>udata.models.Human</em>) &#8211; current human instance</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Need to verify success of operation and give the failure message if the operation is failed.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.change_language">
+<code class="descclassname">udata.views.</code><code class="descname">change_language</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.change_language" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the current language of human. Need for translating reasons and for know what language will be set by default on next accesing page.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request.GET['lang']</strong> (<em>str</em>) &#8211; a name of language in locale format. Something like &#8216;ru&#8217;, &#8216;ro&#8217;, &#8216;en&#8217;. For now we support 3 languages: romanian, russian and english.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="udata.views.get_messages">
+<code class="descclassname">udata.views.</code><code class="descname">get_messages</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.views.get_messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function get all active messages for current human and delete them after sending.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to yourcv&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="work.html"
+                        title="next chapter">Work</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/views.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Viorel Roman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/views.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; yourcv 1.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="yourcv 1.0.1 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">yourcv 1.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>YourCV is a system for generate and manage a large amount of CVs from a same set of datas. Let me explain.
+For example I was study journalism and worked in 7 mass-media (magazines, newspapers, radio and web-sites). At the same time I am a layouter and designed a large amount of books, newspapers and brochures. And I have worked in programming (Python, web-design, web-developing and so on).
+If I want to send my CV to a newspaper, the HR isn&#8217;t interested in my experience of programming or layouting. So I don&#8217;t need to include this informations about me in CV. Similar for case when I send a CV to web-desing company - my experience in journalism is not relevant in this case. For each case I need a different CV, but I don&#8217;t want to write a new CV each time when I need to send it.
+YourCV is a tool for selecting only needed datas from your biography and generate a new CV. You eaven don&#8217;t need to write this datas by yourself if you already introduce it in your Facebook account - just login, and the site will collect all informations itself.</p>
+<span class="target" id="module-udata.models"></span><dl class="function">
+<dt id="udata.models.generate">
+<code class="descclassname">udata.models.</code><code class="descname">generate</code><span class="sig-paren">(</span><em>id</em>, <em>lang</em>, <em>tex</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>It&#8217;s a task for rqworker. Let see the options:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>id</strong> (<em>int</em>) &#8211; the id of user</li>
+<li><strong>lang</strong> (<em>str</em>) &#8211; the language for translate the CV template</li>
+<li><strong>tex</strong> (<em>str or unicode</em>) &#8211; the tex template</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the urls for pdf and png</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.CVTemplate">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">CVTemplate</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.CVTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template for making CV</p>
+<dl class="attribute">
+<dt id="udata.models.CVTemplate.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.CVTemplate.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>the title of template, must be a string</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CVTemplate.text">
+<code class="descname">text</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.CVTemplate.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>the template itself, must be a string</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Human">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Human</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Human" title="Permalink to this definition">¶</a></dt>
+<dd><p>General information about user</p>
+<dl class="attribute">
+<dt id="udata.models.Human.name">
+<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Human.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>the name of user</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.birthday">
+<code class="descname">birthday</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Human.birthday" title="Permalink to this definition">¶</a></dt>
+<dd><p>his birthday (not used now)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.phone">
+<code class="descname">phone</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Human.phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>his phone number as string (any format)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.email">
+<code class="descname">email</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Human.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>his email (a valid email)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.web">
+<code class="descname">web</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Human.web" title="Permalink to this definition">¶</a></dt>
+<dd><p>his website</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.user">
+<code class="descname">user</code><a class="headerlink" href="#udata.models.Human.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>the linked Django user for login</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.lang">
+<code class="descname">lang</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Human.lang" title="Permalink to this definition">¶</a></dt>
+<dd><p>the actual language, used for translate web-interface</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.Human.prenume">
+<code class="descname">prenume</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Human.prenume" title="Permalink to this definition">¶</a></dt>
+<dd><p>For some templates we need to separate name and surname. This method will get the surname</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the surname of <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">human</span> <span class="o">=</span> <span class="n">Human</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">human</span><span class="o">.</span><span class="n">prenume</span><span class="p">()</span>
+<span class="go">u&#39;Viorel&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.Human.nume">
+<code class="descname">nume</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Human.nume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to <a class="reference internal" href="#udata.models.Human.prenume" title="udata.models.Human.prenume"><code class="xref py py-meth docutils literal"><span class="pre">udata.models.Human.prenume()</span></code></a>, it&#8217;s get the name of human</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the first name of <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">human</span> <span class="o">=</span> <span class="n">Human</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">human</span><span class="o">.</span><span class="n">nume</span><span class="p">()</span>
+<span class="go">u&#39;Roman&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Study">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Study</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Study" title="Permalink to this definition">¶</a></dt>
+<dd><p>What studies have user (like liceum, school, university etc.)</p>
+<dl class="attribute">
+<dt id="udata.models.Study.inst">
+<code class="descname">inst</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Study.inst" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of institution (Oxford University, ULIM, Stefan cel Mare Liceum</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Study.begin_year">
+<code class="descname">begin_year</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Study.begin_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>The year when the studies began</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Study.end_year">
+<code class="descname">end_year</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Study.end_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>The year when studies finished</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Study.human">
+<code class="descname">human</code><a class="headerlink" href="#udata.models.Study.human" title="Permalink to this definition">¶</a></dt>
+<dd><p>The linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Work">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Work</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Work" title="Permalink to this definition">¶</a></dt>
+<dd><p>Work experience</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">need to make function param to be a ForeignKey and make a new model with a list of all localized variants of positions</p>
+</div>
+<dl class="attribute">
+<dt id="udata.models.Work.inst">
+<code class="descname">inst</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Work.inst" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of employer (like Leg&amp;Co SRL or Microsoft)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.translations">
+<code class="descname">translations</code><a class="headerlink" href="#udata.models.Work.translations" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>function</strong> (<em>str</em>) &#8211; the localized name of position</li>
+<li><strong>comments</strong> (<em>str</em>) &#8211; the localized comments about this position</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.begin_year">
+<code class="descname">begin_year</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Work.begin_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Year when the user start to work on this position</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.end_year">
+<code class="descname">end_year</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Work.end_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Year when he ends to work on this position</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.human">
+<code class="descname">human</code><a class="headerlink" href="#udata.models.Work.human" title="Permalink to this definition">¶</a></dt>
+<dd><p>The linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.Work.edit">
+<code class="descname">edit</code><span class="sig-paren">(</span><em>inst</em>, <em>function</em>, <em>comments</em>, <em>begin_year</em>, <em>end_year</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Work.edit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for edit the Work instance with given language</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inst</strong> (<em>str or unicode</em>) &#8211; The name of employer</li>
+<li><strong>function</strong> (<em>str or unicode</em>) &#8211; localized name of position</li>
+<li><strong>comments</strong> (<em>str or unicode</em>) &#8211; localized comments about this work</li>
+<li><strong>begin_year</strong> (<em>int</em>) &#8211; year when the user start to work in this position</li>
+<li><strong>end_year</strong> (<em>int</em>) &#8211; year when he ends to work in this position</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Results:</th><td class="field-body"><p class="first">True if all works fine</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Awards">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Awards</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Awards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Diploms, awards, courses etc.</p>
+<dl class="attribute">
+<dt id="udata.models.Awards.translations">
+<code class="descname">translations</code><a class="headerlink" href="#udata.models.Awards.translations" title="Permalink to this definition">¶</a></dt>
+<dd><p>translations for title and description</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>title</strong> (<em>str</em>) &#8211; the name of award</li>
+<li><strong>description</strong> (<a class="reference internal" href="#udata.models.CVTemplate.text" title="udata.models.CVTemplate.text"><em>text</em></a>) &#8211; the description of award</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Awards.year">
+<code class="descname">year</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Awards.year" title="Permalink to this definition">¶</a></dt>
+<dd><p>The year when this award was gained</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Awards.human">
+<code class="descname">human</code><a class="headerlink" href="#udata.models.Awards.human" title="Permalink to this definition">¶</a></dt>
+<dd><p>The linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Ability">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Ability</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Ability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Skills</p>
+<dl class="attribute">
+<dt id="udata.models.Ability.translations">
+<code class="descname">translations</code><a class="headerlink" href="#udata.models.Ability.translations" title="Permalink to this definition">¶</a></dt>
+<dd><p>translated title and comments for skills.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>title</strong> (<em>str or unicode</em>) &#8211; The name of skill (like Vectorial graphic or Text Processing)</li>
+<li><strong>comment</strong> (<em>str or unicode</em>) &#8211; The explanetion of skill (like Adobe Illustrator, Inkscape, good knowleges of MS Word etc.)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Ability.human">
+<code class="descname">human</code><a class="headerlink" href="#udata.models.Ability.human" title="Permalink to this definition">¶</a></dt>
+<dd><p>the linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Language">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Language</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.Language" title="Permalink to this definition">¶</a></dt>
+<dd><p>The language model. For now we allow each user to create it&#8217;s own set of languages.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Make a general set of languages and allow user to choose from this list and not create thousends of records in db.</p>
+</div>
+<dl class="attribute">
+<dt id="udata.models.Language.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.Language.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of language</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.LangSkillVal">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">LangSkillVal</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.LangSkillVal" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a set of language skill vals in europass format.</p>
+<ul class="simple">
+<li>A1 - very basic knowleges</li>
+<li>A2 - beginer</li>
+<li>B1 - can understand something</li>
+<li>B2 - can understand more</li>
+<li>C1 - profy</li>
+<li>C2 - almost nativ user</li>
+</ul>
+<dl class="attribute">
+<dt id="udata.models.LangSkillVal.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.LangSkillVal.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>The title of language skill as indicated in comment before. Not for editing.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.LangSkill">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">LangSkill</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.LangSkill" title="Permalink to this definition">¶</a></dt>
+<dd><p>It&#8217;s a set of language skills of given human</p>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">need to make language to be a list, and user can choose from this list.</p>
+</div>
+<dl class="attribute">
+<dt id="udata.models.LangSkill.language">
+<code class="descname">language</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.LangSkill.language" title="Permalink to this definition">¶</a></dt>
+<dd><p>The language name</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.LangSkill.read">
+<code class="descname">read</code><a class="headerlink" href="#udata.models.LangSkill.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reading skills <a class="reference internal" href="#udata.models.LangSkillVal" title="udata.models.LangSkillVal"><code class="xref py py-class docutils literal"><span class="pre">udata.models.LangSkillVal</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.LangSkill.write">
+<code class="descname">write</code><a class="headerlink" href="#udata.models.LangSkill.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writing skills <a class="reference internal" href="#udata.models.LangSkillVal" title="udata.models.LangSkillVal"><code class="xref py py-class docutils literal"><span class="pre">udata.models.LangSkillVal</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.LangSkill.speak">
+<code class="descname">speak</code><a class="headerlink" href="#udata.models.LangSkill.speak" title="Permalink to this definition">¶</a></dt>
+<dd><p>Speaking skills <a class="reference internal" href="#udata.models.LangSkillVal" title="udata.models.LangSkillVal"><code class="xref py py-class docutils literal"><span class="pre">udata.models.LangSkillVal</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.LangSkill.human">
+<code class="descname">human</code><a class="headerlink" href="#udata.models.LangSkill.human" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associated human</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.CV">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">CV</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.CV" title="Permalink to this definition">¶</a></dt>
+<dd><p>One of many sets of data, choised for create one CV</p>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">need to add localized fileds for pdfs and png and remove method <code class="xref py py-meth docutils literal"><span class="pre">udata.models.CV.paths()</span></code></p>
+</div>
+<dl class="attribute">
+<dt id="udata.models.CV.title">
+<code class="descname">title</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.CV.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>The title of generated CV. Usualy is used in the header of resulted pdf</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.human">
+<code class="descname">human</code><a class="headerlink" href="#udata.models.CV.human" title="Permalink to this definition">¶</a></dt>
+<dd><p>The parent <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.studies">
+<code class="descname">studies</code><a class="headerlink" href="#udata.models.CV.studies" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of included <a class="reference internal" href="#udata.models.Study" title="udata.models.Study"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Study</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.works">
+<code class="descname">works</code><a class="headerlink" href="#udata.models.CV.works" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of included <a class="reference internal" href="work.html#udata.models.Work" title="udata.models.Work"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Work</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.abilities">
+<code class="descname">abilities</code><a class="headerlink" href="#udata.models.CV.abilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of included <a class="reference internal" href="#udata.models.Ability" title="udata.models.Ability"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Ability</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.awards">
+<code class="descname">awards</code><a class="headerlink" href="#udata.models.CV.awards" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of included <a class="reference internal" href="#udata.models.Awards" title="udata.models.Awards"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Awards</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.public">
+<code class="descname">public</code><em class="property"> = None</em><a class="headerlink" href="#udata.models.CV.public" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the CV is generated successful - this value will be True</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.template">
+<code class="descname">template</code><a class="headerlink" href="#udata.models.CV.template" title="Permalink to this definition">¶</a></dt>
+<dd><p>The template for generate pdf, more on <a class="reference internal" href="#udata.models.CVTemplate" title="udata.models.CVTemplate"><code class="xref py py-class docutils literal"><span class="pre">udata.models.CVTemplate</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.translations">
+<code class="descname">translations</code><a class="headerlink" href="#udata.models.CV.translations" title="Permalink to this definition">¶</a></dt>
+<dd><p>The urls for localized versions of pdf and png.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pdf</strong> (<em>str</em>) &#8211; url to generated pdf in given language</li>
+<li><strong>png</strong> (<em>str</em>) &#8211; url to generated png in given language</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.CV.generate_tex">
+<code class="descname">generate_tex</code><span class="sig-paren">(</span><em>lang</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.CV.generate_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a tex file from template in given language</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lang</strong> (<em>str or unicode</em>) &#8211; the language for translate template</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the tex file</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.CV.generate_pdf">
+<code class="descname">generate_pdf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.CV.generate_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method generates the pdfs of cv in all languages.</p>
+<p>In the begin we generate the tex file from template by calling <a class="reference internal" href="#udata.models.CV.generate_tex" title="udata.models.CV.generate_tex"><code class="xref py py-meth docutils literal"><span class="pre">udata.models.CV.generate_tex()</span></code></a>, then we create the jobs using <cite>django_rq</cite> and call <a class="reference internal" href="#udata.models.generate" title="udata.models.generate"><code class="xref py py-func docutils literal"><span class="pre">udata.models.generate()</span></code></a> function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.AbilityTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">AbilityTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>title</em>, <em>comment</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.AbilityTranslation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.AwardsTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">AwardsTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>title</em>, <em>description</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.AwardsTranslation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.CVTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">CVTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>pdf</em>, <em>png</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.CVTranslation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.StudyTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">StudyTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>faculty</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.StudyTranslation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.WorkTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">WorkTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>function</em>, <em>comments</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span><a class="headerlink" href="#udata.models.WorkTranslation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/introduction.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Viorel Roman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/introduction.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction</title>
+    
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="The methods"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to yourcv’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">yourcv 1.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1>Introduction</h1>
+<p>YourCV is a system for generate and manage a large amount of CVs from a same set of datas. Let me explain.
+For example I was study journalism and worked in 7 mass-media (magazines, newspapers, radio and web-sites). At the same time I am a layouter and designed a large amount of books, newspapers and brochures. And I have worked in programming (Python, web-design, web-developing and so on).
+If I want to send my CV to a newspaper, the HR isn&#8217;t interested in my experience of programming or layouting. So I don&#8217;t need to include this informations about me in CV. Similar for case when I send a CV to web-desing company - my experience in journalism is not relevant in this case. For each case I need a different CV, but I don&#8217;t want to write a new CV each time when I need to send it.
+YourCV is a tool for selecting only needed datas from your biography and generate a new CV. You eaven don&#8217;t need to write this datas by yourself if you already introduce it in your Facebook account - just login, and the site will collect all informations itself.</p>
+<span class="target" id="module-udata.models"></span><dl class="function">
+<dt id="udata.models.generate">
+<code class="descclassname">udata.models.</code><code class="descname">generate</code><span class="sig-paren">(</span><em>p</em>, <em>id</em>, <em>lang</em>, <em>tex</em><span class="sig-paren">)</span></dt>
+<dd><p>It&#8217;s a task for rqworker. Let see the options:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>p</strong> (<em>dict</em>) &#8211; a dictionary of paths for texfile, generated pdf, storred pdf and storred png</li>
+<li><strong>id</strong> (<em>int</em>) &#8211; the id of CV. It used for remove the temporary files</li>
+<li><strong>lang</strong> (<em>str</em>) &#8211; the language for translate the CV template</li>
+<li><strong>tex</strong> (<em>str or unicode</em>) &#8211; the tex template</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Because we move in direction of decentralised generation of pdf-s, we need to review the work of this function. The p dict will be not needed and the id will not be important. We need to return or a list of urls, or the resulted files</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.CVTemplate">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">CVTemplate</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Template for making CV</p>
+<dl class="attribute">
+<dt id="udata.models.CVTemplate.title">
+<code class="descname">title</code><em class="property"> = None</em></dt>
+<dd><p>the title of template, must be a string</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CVTemplate.text">
+<code class="descname">text</code><em class="property"> = None</em></dt>
+<dd><p>the template itself, must be a string</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Human">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Human</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>General information about user</p>
+<dl class="attribute">
+<dt id="udata.models.Human.name">
+<code class="descname">name</code><em class="property"> = None</em></dt>
+<dd><p>the name of user</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.birthday">
+<code class="descname">birthday</code><em class="property"> = None</em></dt>
+<dd><p>his birthday (not used now)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.phone">
+<code class="descname">phone</code><em class="property"> = None</em></dt>
+<dd><p>his phone number as string (any format)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.email">
+<code class="descname">email</code><em class="property"> = None</em></dt>
+<dd><p>his email (a valid email)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.web">
+<code class="descname">web</code><em class="property"> = None</em></dt>
+<dd><p>his website</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.user">
+<code class="descname">user</code></dt>
+<dd><p>the linked Django user for login</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Human.lang">
+<code class="descname">lang</code><em class="property"> = None</em></dt>
+<dd><p>the actual language, used for translate web-interface</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.Human.prenume">
+<code class="descname">prenume</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>For some templates we need to separate name and surname. This method will get the surname</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the surname of <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">human</span> <span class="o">=</span> <span class="n">Human</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">human</span><span class="o">.</span><span class="n">prenume</span><span class="p">()</span>
+<span class="go">u&#39;Viorel&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.Human.nume">
+<code class="descname">nume</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Similar to <a class="reference internal" href="#udata.models.Human.prenume" title="udata.models.Human.prenume"><code class="xref py py-meth docutils literal"><span class="pre">udata.models.Human.prenume()</span></code></a>, it&#8217;s get the name of human</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the first name of <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">human</span> <span class="o">=</span> <span class="n">Human</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">human</span><span class="o">.</span><span class="n">nume</span><span class="p">()</span>
+<span class="go">u&#39;Roman&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Study">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Study</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>What studies have user (like liceum, school, university etc.)</p>
+<dl class="attribute">
+<dt id="udata.models.Study.inst">
+<code class="descname">inst</code><em class="property"> = None</em></dt>
+<dd><p>The name of institution (Oxford University, ULIM, Stefan cel Mare Liceum</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Study.begin_year">
+<code class="descname">begin_year</code><em class="property"> = None</em></dt>
+<dd><p>The year when the studies began</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Study.end_year">
+<code class="descname">end_year</code><em class="property"> = None</em></dt>
+<dd><p>The year when studies finished</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Study.human">
+<code class="descname">human</code></dt>
+<dd><p>The linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.Study.years">
+<code class="descname">years</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a formated string of years diapason for be included in tex</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Work">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Work</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Work experience</p>
+<dl class="attribute">
+<dt id="udata.models.Work.inst">
+<code class="descname">inst</code><em class="property"> = None</em></dt>
+<dd><p>The name of employer (like Leg&amp;Co SRL or Microsoft)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.translations">
+<code class="descname">translations</code></dt>
+<dd><p>The translations for position and some comments</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.begin_year">
+<code class="descname">begin_year</code><em class="property"> = None</em></dt>
+<dd><p>Year when the user start to work on this position</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.end_year">
+<code class="descname">end_year</code><em class="property"> = None</em></dt>
+<dd><p>Year when he ends to work on this position</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Work.human">
+<code class="descname">human</code></dt>
+<dd><p>The linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.Work.years">
+<code class="descname">years</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Similar to <a class="reference internal" href="#udata.models.Study.years" title="udata.models.Study.years"><code class="xref py py-meth docutils literal"><span class="pre">udata.models.Study.years()</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Awards">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Awards</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Diploms, awards, courses etc.</p>
+<dl class="attribute">
+<dt id="udata.models.Awards.translations">
+<code class="descname">translations</code></dt>
+<dd><p>translations for title and description</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>title</strong> (<em>str</em>) &#8211; the name of award</li>
+<li><strong>description</strong> (<a class="reference internal" href="#udata.models.CVTemplate.text" title="udata.models.CVTemplate.text"><em>text</em></a>) &#8211; the description of award</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Awards.year">
+<code class="descname">year</code><em class="property"> = None</em></dt>
+<dd><p>The year when this award was gained</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Awards.human">
+<code class="descname">human</code></dt>
+<dd><p>The linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Ability">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Ability</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>Skills</p>
+<dl class="attribute">
+<dt id="udata.models.Ability.translations">
+<code class="descname">translations</code></dt>
+<dd><p>translated title and comments for skills.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>title</strong> (<em>str or unicode</em>) &#8211; The name of skill (like Vectorial graphic or Text Processing)</li>
+<li><strong>comment</strong> (<em>str or unicode</em>) &#8211; The explanetion of skill (like Adobe Illustrator, Inkscape, good knowleges of MS Word etc.)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.Ability.human">
+<code class="descname">human</code></dt>
+<dd><p>the linked <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.Language">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">Language</code><span class="sig-paren">(</span><em>id</em>, <em>title</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.LangSkillVal">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">LangSkillVal</code><span class="sig-paren">(</span><em>id</em>, <em>title</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.LangSkill">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">LangSkill</code><span class="sig-paren">(</span><em>id</em>, <em>language</em>, <em>read_id</em>, <em>write_id</em>, <em>speak_id</em>, <em>human_id</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.CV">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">CV</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
+<dd><p>One of many sets of data, choised for create one CV</p>
+<dl class="attribute">
+<dt id="udata.models.CV.title">
+<code class="descname">title</code><em class="property"> = None</em></dt>
+<dd><p>The title of generated CV. Usualy is used in the header of resulted pdf</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.human">
+<code class="descname">human</code></dt>
+<dd><p>The parent <a class="reference internal" href="#udata.models.Human" title="udata.models.Human"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Human</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.studies">
+<code class="descname">studies</code></dt>
+<dd><p>The list of included <a class="reference internal" href="#udata.models.Study" title="udata.models.Study"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Study</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.works">
+<code class="descname">works</code></dt>
+<dd><p>The list of included <a class="reference internal" href="#udata.models.Work" title="udata.models.Work"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Work</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.abilities">
+<code class="descname">abilities</code></dt>
+<dd><p>The list of included <a class="reference internal" href="#udata.models.Ability" title="udata.models.Ability"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Ability</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.awards">
+<code class="descname">awards</code></dt>
+<dd><p>The list of included <a class="reference internal" href="#udata.models.Awards" title="udata.models.Awards"><code class="xref py py-class docutils literal"><span class="pre">udata.models.Awards</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.public">
+<code class="descname">public</code><em class="property"> = None</em></dt>
+<dd><p>If the CV is generated successful - this value will be True</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="udata.models.CV.template">
+<code class="descname">template</code></dt>
+<dd><p>The template for generate pdf, more on <a class="reference internal" href="#udata.models.CVTemplate" title="udata.models.CVTemplate"><code class="xref py py-class docutils literal"><span class="pre">udata.models.CVTemplate</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.CV.mkurl">
+<code class="descname">mkurl</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a url from absolute path to pdf or png</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>p</strong> (<em>str</em>) &#8211; an absolute path to pdf or png</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">url</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.CV.generate_tex">
+<code class="descname">generate_tex</code><span class="sig-paren">(</span><em>tpl</em>, <em>lang</em><span class="sig-paren">)</span></dt>
+<dd><p>Generate a tex file from template in given language</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tpl</strong> (<em>str or unicode</em>) &#8211; the django template for generating tex-file</li>
+<li><strong>lang</strong> (<em>str or unicode</em>) &#8211; the language for translate template</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the tex file</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="udata.models.CV.generate_pdf">
+<code class="descname">generate_pdf</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>This method generates the pdfs of cv in all languages.</p>
+<p>In the begin we generate the tex file from template by calling <cite>self.generate_tex(tpl, lang)</cite>, then we create the jobs using <cite>django_rq</cite> and call <a class="reference internal" href="#udata.models.generate" title="udata.models.generate"><code class="xref py py-func docutils literal"><span class="pre">udata.models.generate()</span></code></a> function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="udata.models.AbilityTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">AbilityTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>title</em>, <em>comment</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.AwardsTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">AwardsTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>title</em>, <em>description</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.StudyTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">StudyTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>faculty</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="udata.models.WorkTranslation">
+<em class="property">class </em><code class="descclassname">udata.models.</code><code class="descname">WorkTranslation</code><span class="sig-paren">(</span><em>id</em>, <em>function</em>, <em>comments</em>, <em>language_code</em>, <em>master_id</em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Viorel Roman.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

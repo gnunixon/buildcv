@@ -1,0 +1,108 @@
+Results of doctest builder run on 2015-05-12 17:44:05
+=====================================================
+
+Document: introduction
+----------------------
+**********************************************************************
+File "introduction.rst", line 11, in default
+Failed example:
+    from cv.urls import *
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python2.7/doctest.py", line 1315, in __run
+        compileflags, 1) in test.globs
+      File "<doctest default[0]>", line 1, in <module>
+        from cv.urls import *
+      File "/var/www/cv/cv/urls.py", line 36, in <module>
+        url(r'^admin/', include(admin.site.urls)),
+      File "/usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py", line 262, in urls
+        return self.get_urls(), self.app_name, self.name
+      File "/usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py", line 223, in get_urls
+        self.check_dependencies()
+      File "/usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py", line 161, in check_dependencies
+        if not apps.is_installed('django.contrib.admin'):
+      File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 231, in is_installed
+        self.check_apps_ready()
+      File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 124, in check_apps_ready
+        raise AppRegistryNotReady("Apps aren't loaded yet.")
+    AppRegistryNotReady: Apps aren't loaded yet.
+**********************************************************************
+File "introduction.rst", line 12, in default
+Failed example:
+    human = Human.objects.get(id=1)
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python2.7/doctest.py", line 1315, in __run
+        compileflags, 1) in test.globs
+      File "<doctest default[1]>", line 1, in <module>
+        human = Human.objects.get(id=1)
+    NameError: name 'Human' is not defined
+**********************************************************************
+File "introduction.rst", line 13, in default
+Failed example:
+    human.prenume()
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python2.7/doctest.py", line 1315, in __run
+        compileflags, 1) in test.globs
+      File "<doctest default[2]>", line 1, in <module>
+        human.prenume()
+    NameError: name 'human' is not defined
+**********************************************************************
+File "introduction.rst", line 11, in default
+Failed example:
+    from cv.urls import *
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python2.7/doctest.py", line 1315, in __run
+        compileflags, 1) in test.globs
+      File "<doctest default[0]>", line 1, in <module>
+        from cv.urls import *
+      File "/var/www/cv/cv/urls.py", line 36, in <module>
+        url(r'^admin/', include(admin.site.urls)),
+      File "/usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py", line 262, in urls
+        return self.get_urls(), self.app_name, self.name
+      File "/usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py", line 223, in get_urls
+        self.check_dependencies()
+      File "/usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py", line 161, in check_dependencies
+        if not apps.is_installed('django.contrib.admin'):
+      File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 231, in is_installed
+        self.check_apps_ready()
+      File "/usr/local/lib/python2.7/dist-packages/django/apps/registry.py", line 124, in check_apps_ready
+        raise AppRegistryNotReady("Apps aren't loaded yet.")
+    AppRegistryNotReady: Apps aren't loaded yet.
+**********************************************************************
+File "introduction.rst", line 12, in default
+Failed example:
+    human = Human.objects.get(id=1)
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python2.7/doctest.py", line 1315, in __run
+        compileflags, 1) in test.globs
+      File "<doctest default[1]>", line 1, in <module>
+        human = Human.objects.get(id=1)
+    NameError: name 'Human' is not defined
+**********************************************************************
+File "introduction.rst", line 13, in default
+Failed example:
+    human.nume()
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python2.7/doctest.py", line 1315, in __run
+        compileflags, 1) in test.globs
+      File "<doctest default[2]>", line 1, in <module>
+        human.nume()
+    NameError: name 'human' is not defined
+**********************************************************************
+1 items had failures:
+   6 of   6 in default
+6 tests in 1 items.
+0 passed and 6 failed.
+***Test Failed*** 6 failures.
+
+Doctest summary
+===============
+    6 tests
+    6 failures in tests
+    0 failures in setup code
+    0 failures in cleanup code

@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-30 23:13+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+
+#: templates/index.html:87 templates/index.html.py:139
+msgid "General"
+msgstr "General"
+
+#: templates/index.html:90 templates/index.html.py:182
+msgid "Studies"
+msgstr "Studii"
+
+#: templates/index.html:93
+msgid "Work Experience"
+msgstr "Experienţa de lucru"
+
+#: templates/index.html:96 templates/index.html.py:254
+msgid "Awards"
+msgstr "Realizări"
+
+#: templates/index.html:99 templates/index.html.py:288
+msgid "Skills"
+msgstr "Abilităţi"
+
+#: templates/index.html:102
+msgid "CVs"
+msgstr "CV-uri"
+
+#: templates/index.html:123
+msgid "Want a good CV?"
+msgstr "Îţi doreşti un CV frumos?"
+
+#: templates/index.html:124
+msgid "Manage your CVs here"
+msgstr "Administrează-ţi CV-urile aici"
+
+#: templates/index.html:126
+msgid "Try it now!"
+msgstr "Încearcă acum!"
+
+#: templates/index.html:128
+msgid "Login with Facebook account"
+msgstr "Loghează-te prin contul de Facebook"
+
+#: templates/index.html:140
+msgid "General informations about you"
+msgstr "Informaţii generale despre tine"
+
+#: templates/index.html:168
+msgid "Save and move next"
+msgstr "Salvează"
+
+#: templates/index.html:183
+msgid "List of all your studies"
+msgstr "Lista studiilor tale"
+
+#: templates/index.html:193 templates/index.html.py:229
+msgid "From"
+msgstr "Din"
+
+#: templates/index.html:194 templates/index.html.py:230
+msgid "To"
+msgstr "Până"
+
+#: templates/index.html:195
+msgid "School"
+msgstr "Instituţia"
+
+#: templates/index.html:196
+msgid "Faculty"
+msgstr "Facultatea"
+
+#: templates/index.html:218
+msgid "Work"
+msgstr "Experienţa de lucru"
+
+#: templates/index.html:219
+msgid "List of your profesional experience"
+msgstr "Lista locurilor tale de muncă"
+
+#: templates/index.html:231
+msgid "Institution"
+msgstr "Angajatorul"
+
+#: templates/index.html:232
+msgid "Position"
+msgstr "Funcţia"
+
+#: templates/index.html:255
+msgid "List of your awards, trainings etc."
+msgstr "Lista realizărilor, trainingurilor la care ai participat, etc."
+
+#: templates/index.html:265
+msgid "Year"
+msgstr "Anul"
+
+#: templates/index.html:266 templates/index.html.py:299
+msgid "Title"
+msgstr "Titlul"
+
+#: templates/index.html:267 templates/index.html.py:300
+msgid "Description"
+msgstr "Descrierea"
+
+#: templates/index.html:289
+msgid "List of all your skills"
+msgstr "Lista abilităţilor tale"
+
+#: templates/index.html:321
+msgid "Languages"
+msgstr "Limbi"
+
+#: templates/index.html:322
+#, fuzzy
+#| msgid "List of all your skills"
+msgid "List of languages you know"
+msgstr "Lista abilităţilor tale"
+
+#: templates/index.html:331
+msgid "Language"
+msgstr "Limba"
+
+#: templates/index.html:332
+msgid "Read"
+msgstr "Citit"
+
+#: templates/index.html:333
+msgid "Write"
+msgstr "Scris"
+
+#: templates/index.html:334
+msgid "Speak"
+msgstr "Vorbit"
+
+#: templates/index.html:354 templates/index.html.py:369
+msgid "Generate CV"
+msgstr "Generează CV-ul"
+
+#: templates/index.html:355
+msgid "All your CVs"
+msgstr "Toate CV-urile tale"
+
+msgid "Contact"
+msgstr "Contact"

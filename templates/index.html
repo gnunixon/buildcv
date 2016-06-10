@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="You can easy make a CV here simply as login with your Facebook account. You can create a lot of resumes from the same set of data and modify all your CVs at the same time.">
+    <meta name="author" content="BuildCV">
+
+    <title>Curriculum Vitae Management System</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/agency.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <!-- Custom Fonts -->
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        #progress-info {
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+        #cv-previews {
+            margin-top: 30px;
+        }
+        .lang {
+            margin-right: 15px;
+            cursor: pointer;
+            cursor: hand;
+        }
+        .lang.active {
+            color: #fff;
+            font-weight: bold;
+        }
+        .onpage {
+            color: #666;
+            padding-bottom: 15px;
+        }
+        .onpage.active {
+            color: #333;
+        }
+    </style>
+</head>
+<body id="page-top" class="index">
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '875231182534225',
+                xfbml      : true,
+                version    : 'v2.3'
+            });
+
+            // ADD ADDITIONAL FACEBOOK CODE HERE
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                {% for lang in languages %}
+                    <a class="{{ lang }} lang{% if lang == request.user.human.lang %} active{% endif %}">{{ lang }}</a>
+                {% endfor %}
+                <a class="navbar-brand page-scroll" href="#page-top">BuildCV</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li>
+                            <a class="page-scroll" href="#general" data-i18n="General">General</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#studies" data-i18n="Studies">Studies</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#work" data-i18n="Work Experience">Work Experience</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#awards" data-i18n="Awards">Awards</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#skills" data-i18n="Skills">Skills</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#languages" data-i18n="Languages">Languages</a>
+                        </li>
+                        <li>
+                            <a href="#cvs" class="page-scroll" data-i18n="CVs">CVs</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+                        {% else %}
+                            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in" data-i18n="Want a good CV?">Want a good CV?</div>
+                <div class="intro-heading" data-i18n="Manage your CVs here">Manage your CVs here</div>
+                {% if request.user.is_authenticated %}
+                    <a href="#general" class="page-scroll btn btn-xl" data-i18n="Try it now!">Try it now!</a>
+                {% else %}
+                    <a class="btn btn-xl" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" data-i18n>Login with Facebook account</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    {% if request.user.is_authenticated %}
+    <!-- Services Section -->
+    <section id="general">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" data-i18n="General">General</h2>
+                    <h3 class="section-subheading text-muted" data-i18n="General informations about you">General informations about you</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="generalInfo" id="generalForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name *" name="name" required data-validation-required-message="Please enter your name." value="{{ request.user.human.name }}">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email *" name="email" required data-validation-required-message="Please enter your email address." value="{{ request.user.human.email }}">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Your Phone *" name="phone" required data-validation-required-message="Please enter your phone number." value="{{ request.user.human.phone }}">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Website *" name="web" required data-validation-required-message="Please enter your website." value="{{ request.user.human.web }}">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="button" class="formSubmit btn btn-xl" data-i18n>Save and move next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="studies" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" data-i18n="Studies">Studies</h2>
+                    <h3 class="section-subheading text-muted" data-i18n="List of all your studies">List of all your studies</h3>
+                </div>
+            </div>
+            {% if request.user.human %}
+            <div class="row">
+            	<div class="col-lg-12">
+                    <table class="table table-hover">
+                    	<thead>
+                    		<tr>
+                    			<th>&nbsp;</th>
+                                <th data-i18n="From">From</th>
+                                <th data-i18n="To">To</th>
+                                <th data-i18n="School">School</th>
+                                <th data-i18n="Faculty">Faculty</th>
+                    			<th>&nbsp;</th>
+                    		</tr>
+                    	</thead>
+                    	<tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-6 col-md-offset-3">
+                        {% for lang in languages %}
+                            <a class="onpage {{ lang }} lang{% if lang == request.user.human.lang %} active{% endif %}">{{ lang }}</a>
+                        {% endfor %}
+                    </div>
+                    <form name="studiesInfo" id="studyForm" novalidate></form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" data-i18n="Work">Work</h2>
+                    <h3 class="section-subheading text-muted" data-i18n="List of your profesional experience"></h3>
+                </div>
+            </div>
+            {% if request.user.human %}
+            <div class="row">
+            	<div class="col-lg-12">
+                    <table class="table table-hover">
+                    	<thead>
+                    		<tr>
+                    			<th>&nbsp;</th>
+                                <th data-i18n="From">From</th>
+                                <th data-i18n="To">To</th>
+                                <th data-i18n="Institution">Institution</th>
+                                <th data-i18n="Position">Position</th>
+                    			<th style="width: 100px;">&nbsp;</th>
+                    		</tr>
+                    	</thead>
+                    	<tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-6 col-md-offset-3">
+                        {% for lang in languages %}
+                            <a class="onpage {{ lang }} lang{% if lang == request.user.human.lang %} active{% endif %}">{{ lang }}</a>
+                        {% endfor %}
+                    </div>
+                    <form name="worksInfo" id="workForm" novalidate></form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Award Section -->
+    <section id="awards">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" data-i18n="Awards">Awards</h2>
+                    <h3 class="section-subheading text-muted" data-i18n="List of your awards, trainings etc."></h3>
+                </div>
+            </div>
+            {% if request.user.human %}
+            <div class="row">
+            	<div class="col-lg-12">
+                    <table class="table table-hover">
+                    	<thead>
+                    		<tr>
+                    			<th>&nbsp;</th>
+                                <th data-i18n="Year">Year</th>
+                                <th data-i18n="Title">Title</th>
+                                <th data-i18n="Description">Description</th>
+                    			<th style="width: 100px;">&nbsp;</th>
+                    		</tr>
+                    	</thead>
+                    	<tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-6 col-md-offset-3">
+                        {% for lang in languages %}
+                            <a class="onpage {{ lang }} lang{% if lang == request.user.human.lang %} active{% endif %}">{{ lang }}</a>
+                        {% endfor %}
+                    </div>
+                    <form name="awardsInfo" id="awardForm" novalidate></form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" data-i18n="Skills">Skills</h2>
+                    <h3 class="section-subheading text-muted" data-i18n="List of all your skills"></h3>
+                </div>
+            </div>
+            {% if request.user.human %}
+            <div class="row">
+            	<div class="col-lg-12">
+                    <table class="table table-hover">
+                    	<thead>
+                    		<tr>
+                    			<th>&nbsp;</th>
+                                <th data-i18n="Title">Title</th>
+                                <th data-i18n="Description">Description</th>
+                    			<th style="width: 100px;">&nbsp;</th>
+                    		</tr>
+                    	</thead>
+                    	<tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-6 col-md-offset-3">
+                        {% for lang in languages %}
+                            <a class="onpage {{ lang }} lang{% if lang == request.user.human.lang %} active{% endif %}">{{ lang }}</a>
+                        {% endfor %}
+                    </div>
+                    <form name="skillsInfo" id="abilityForm" novalidate></form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" data-i18n="Languages">Languages</h2>
+                    <h3 class="section-subheading text-muted" data-i18n="List of languages you know"></h3>
+                </div>
+            </div>
+            {% if request.user.human %}
+            <div class="row">
+            	<div class="col-lg-12">
+                    <table class="table table-hover">
+                    	<thead>
+                    		<tr>
+                                <th data-i18n="Language">Language</th>
+                                <th data-i18n="Read">Read</th>
+                                <th data-i18n="Write">Write</th>
+                                <th data-i18n="Speak">Speak</th>
+                    			<th style="width: 100px;">&nbsp;</th>
+                    		</tr>
+                    	</thead>
+                    	<tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="languagesInfo" id="langForm" novalidate></form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="cvs">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-12 text-center">
+                    <h2 class="section-heading" data-i18n="Generate CV">Generate CV</h2>
+                    <h3 class="section-subheading text-muted" data-i18n="All your CVs">All your CVs</h3>
+    				<div class="row">
+    					<div class="col-lg-12">
+                           <form id="generateCV">
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="For what job you candidate?" name="title" required data-validation-required-message="Enter please the name of the job you candidate">
+                                                <p class="help-block text-danger"></p>
+                                            </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-lg-12 text-center">
+                                        <button type="button" class="formClear btn btn-xl" data-i18n="Clear form">Clear form</button>
+                                        <button type="button" class="formSubmit btn btn-xl" data-i18n="Generate CV">Generate CV</button>
+                                    </div>
+                                </div>
+                           </form>
+                        </div>
+    				</div>
+                    <div id="cv-previews" class="row"></div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+    {% endif %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; BuildCV 2015</span>
+                </div>
+                <div class="col-md-4">
+                    <!--
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                    -->
+                </div>
+                <div class="col-md-4">
+                    <!--
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                    -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="progress-info" class="col-lg-12"></div>
+
+    <!-- jQuery -->
+    <script src="/static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="/static/js/classie.js"></script>
+    <script src="/static/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="/static/js/jqBootstrapValidation.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script type="text/javascript" src="/static/swig.min.js"></script>
+    <script type="text/javascript" src="/static/form.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="/static/i18next-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/static/notify.js"></script>
+    <script type="text/javascript" src="/static/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="/static/base.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            i18n.setLng('{{ request.user.human.lang }}');
+            $('body *').i18n();
+        });
+    </script>
+</body>
+</html>
